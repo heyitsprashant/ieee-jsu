@@ -1,0 +1,145 @@
+{% extends "base.html" %}
+{% block title %}About Us{% endblock %}
+{% load static %}
+{% block content %}
+   
+   <header class="website-background">
+        <div class="website-background-overlay"></div>
+        {% if background and background.background_image %}
+            <div class="website-background-overlay-image">
+                <img src="{{ background.background_image.url }}" alt="About Background" style="width: 100%; height: 100%; object-fit: cover; object-position: center; z-index: -1; filter: brightness(50%);">
+            </div>
+        {% endif %}
+        <div class="website-background-content">
+            <h1>{% if background %}{{ background.title }}{% else %}About Us{% endif %}</h1>
+            <p>{% if background %}{{ background.subtitle }}{% else %}Learn more about our mission and activities.{% endif %}</p>
+        </div>
+    </header>
+
+    {% for section in about_sections %}
+    <section class="{% cycle 'info-section' 'mission-section' %}">
+        <div class="container">
+            <h2 class="scroll-animation-fade">{{ section.title }}</h2>
+            <div class="about-content">
+                <div class="about-row">
+                    {% if section.image %}
+                    <div class="about-image-col scroll-animation-left">
+                        <img src="{{ section.image.url }}" alt="{{ section.title }}" class="about-image">
+                    </div>
+                    {% else %}
+                    <div class="about-image-col scroll-animation-left">
+                        <img src="https://placehold.co/600x400/EEE/31343C" alt="{{ section.title }}" class="about-image">
+                    </div>
+                    {% endif %}
+                    <div class="about-text-col scroll-animation-right">
+                        <div class="">
+                            {{ section.content|safe }}
+                        </div>
+                        {% if section.button_text and section.button_url %}
+                        <div class="about-button-wrapper">
+                            <a href="{{ section.button_url }}" class="about-button" target="_blank">{{ section.button_text }}</a>
+                        </div>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    {% empty %}
+    <section class="info-section">
+        <div class="container">
+            <h2 class="scroll-animation-fade">About Us</h2>
+            <!-- <p class="scroll-animation"></p> -->
+        </div>
+    </section>
+    {% endfor %}
+
+    <section class="what-we-do">
+        <h2 class="scroll-animation-fade">What We Do</h2>
+        <div class="container">
+            <div class="grid">
+                <div class="card scroll-animation-scale delay-100">
+                    <h3>Technical Workshops</h3>
+                    <p>Regular hands-on sessions covering cutting-edge technologies, programming, and engineering principles.</p>
+                </div>
+                <div class="card scroll-animation-scale delay-200">
+                    <h3>Professional Development</h3>
+                    <p>Career guidance, resume workshops, and networking opportunities with industry professionals.</p>
+                </div>
+                <div class="card scroll-animation-scale delay-300">
+                    <h3>Research Projects</h3>
+                    <p>Collaborative research initiatives and projects that solve real-world problems.</p>
+                </div>
+                <div class="card scroll-animation-scale delay-400">
+                    <h3>Community Outreach</h3>
+                    <p>Engaging with the community through tech talks, STEM education, and volunteer activities.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="mentors-section">
+        <div class="container">
+            <h2 class="scroll-animation-fade">Our Faculty Mentors</h2>
+            {% for mentor in mentors %}
+            <div class="mentor-row scroll-animation">
+                <div class="text-center">
+                    <img src="{{ mentor.image.url }}" alt="{{ mentor.name }}" class="mentor-image mx-auto">
+                    <h3>{{ mentor.name|safe }}</h3>
+                    <p>{{ mentor.position|safe }}</p>
+                    <p class="expertise">{{ mentor.expertise }}</p>
+                    <div class="mentor-socials">
+                        {% if mentor.email %}
+                        <a href="mailto:{{ mentor.email }}" title="Email"><i class="fas fa-envelope"></i></a>
+                        {% endif %}
+                        {% if mentor.linkedin %}
+                        <a href="{{ mentor.linkedin }}" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                        {% endif %}
+                        {% if mentor.github %}
+                        <a href="{{ mentor.github }}" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+                        {% endif %}
+                        {% if mentor.google_scholar %}
+                        <a href="{{ mentor.google_scholar }}" target="_blank" title="Google Scholar"><i class="fas fa-graduation-cap"></i></a>
+                        {% endif %}
+                        {% if mentor.personal_website %}
+                        <a href="{{ mentor.personal_website }}" target="_blank" title="Personal Website"><i class="fas fa-globe"></i></a>
+                        {% endif %}
+                    </div>
+                </div>
+                <div class="mentor-bio">
+                    <p>{{ mentor.bio|safe }}</p>
+                </div>
+            </div>
+            {% empty %}
+            <p class="text-center">No mentors found</p>
+            {% endfor %}
+        </div>
+    </section>
+    <section class="officers-section">
+        <div class="container">
+            <h2 class="scroll-animation-fade">Meet Our Student Officers</h2>
+            <div class="officers-grid">
+                {% for student in students %}
+                <div class="officer-card text-center scroll-animation-scale delay-{{ forloop.counter0|divisibleby:4|yesno:'100,200,300,400' }}">
+                    <img src="{{student.image.url}}" alt="{{student.name}}" class="mx-auto">
+                    <h3>{{student.name|safe}}</h3>
+                    <p>{{student.position|safe}}</p>
+                    <div class="officer-socials">
+                        {% if student.email %}
+                        <a href="mailto:{{student.email}}" title="Email"><i class="fas fa-envelope"></i></a>
+                        {% endif %}
+                        {% if student.linkedin %}
+                        <a href="{{student.linkedin}}" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                        {% endif %}
+                        {% if student.github %}
+                        <a href="{{student.github}}" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+                        {% endif %}
+                    </div>
+                </div>
+                {%empty%}
+                <p class="text-center">No officers found</p>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+    
+{% endblock %}

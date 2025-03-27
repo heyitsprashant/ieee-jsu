@@ -1,0 +1,113 @@
+{% extends "base.html" %}
+{% block title %}Home{% endblock %}
+{% load static %}
+{% block content %}
+    <header class="website-background-home">
+        <div class="website-background-overlay-image">
+            {% if background and background.background_image %}
+                <img src="{{ background.background_image.url }}" alt="Website Background" style="width: 100%; height: 100%; object-fit: cover; object-position: center top; z-index: -1; filter: brightness(50%);">
+            {% else %}
+                <img src="{% static 'assets/jsu-anglehall.jpg' %}" alt="Default Background" style="width: 100%; height: 100%; object-fit: cover; object-position: center top; z-index: -1; filter: brightness(50%);">
+            {% endif %}
+        </div>
+        <div class="website-background-content">
+            <div class="content-wrapper">
+                <h1>{% if background %}{{ background.title|safe }}{% else %}Welcome to IEEE{% endif %}</h1>
+                <p>{% if background %}{{ background.subtitle|safe }}{% else %}Advancing Technology for Humanity{% endif %}</p>
+                <div class="button-group">
+                    <a href="/about" class="website-background-button">Learn More</a>
+                    <a href="/members" class="website-background-button">Become a Member</a>
+                    <a href="/events" class="website-background-button">View Events</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    {% if home_sections %}
+    <section class="about-section py-5">
+        <div class="container">
+            {% for section in home_sections %}
+                {% if section.section_type == 'media_only' %}
+                    <div class="media-only-section mb-5 scroll-animation">
+                        <div class="row justify-content-center">
+                            <div class="col-12">
+                                <div class="about-media">
+                                    {% if section.media_type == 'image' and section.image %}
+                                        <img src="{{ section.image.url }}" alt="{{ section.title }}" class="img-fluid rounded shadow">
+                                    {% elif section.media_type == 'video' and section.video %}
+                                        <video controls class="w-100 rounded shadow">
+                                            <source src="{{ section.video.url }}" type="video/mp4">
+                                            Your browser does not support the video tag.
+                                        </video>
+                                    {% elif section.media_type == 'video_link' and section.video_link %}
+                                        <div class="ratio ratio-16x9">
+                                            <iframe src="{{ section.video_link }}" allowfullscreen class="rounded shadow"></iframe>
+                                        </div>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {% else %}
+                    <div class="about-item {% if forloop.counter|divisibleby:2 %}about-item-reverse{% endif %} mb-5">
+                        <div class="row align-items-center g-4">
+                            {% if forloop.first and section.is_homepage_feature %}
+                                <div class="col-12 mb-4">
+                                    <div class="about-content text-center scroll-animation-fade">
+                                        <h3 class="mb-4">{{ section.title|safe }}</h3>
+                                        {% if section.description %}
+                                            <div class="about-description">{{ section.description|safe }}</div>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                                <div class="col-12 mb-4">
+                                    <div class="about-media scroll-animation">
+                                        {% if section.media_type == 'image' and section.image %}
+                                            <img src="{{ section.image.url }}" alt="{{ section.title }}" class="img-fluid rounded shadow">
+                                        {% elif section.media_type == 'video' and section.video %}
+                                            <video controls class="w-100 rounded shadow">
+                                                <source src="{{ section.video.url }}" type="video/mp4">
+                                                Your browser does not support the video tag.
+                                            </video>
+                                        {% elif section.media_type == 'video_link' and section.video_link %}
+                                            <div class="ratio ratio-16x9">
+                                                <iframe src="{{ section.video_link }}" allowfullscreen class="rounded shadow"></iframe>
+                                            </div>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                            {% else %}
+                                <div class="col-lg-6 {% if forloop.counter|divisibleby:2 %}order-lg-2{% endif %}">
+                                    <div class="about-content {% if forloop.counter|divisibleby:2 %}scroll-animation-right{% else %}scroll-animation-left{% endif %}">
+                                        <h3 class="mb-4">{{ section.title|safe }}</h3>
+                                        {% if section.description %}
+                                            <div class="about-description">{{ section.description|safe }}</div>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 {% if forloop.counter|divisibleby:2 %}order-lg-1{% endif %}">
+                                    <div class="about-media {% if forloop.counter|divisibleby:2 %}scroll-animation-left{% else %}scroll-animation-right{% endif %}">
+                                        {% if section.media_type == 'image' and section.image %}
+                                            <img src="{{ section.image.url }}" alt="{{ section.title }}" class="img-fluid rounded shadow">
+                                        {% elif section.media_type == 'video' and section.video %}
+                                            <video controls class="w-100 rounded shadow">
+                                                <source src="{{ section.video.url }}" type="video/mp4">
+                                                Your browser does not support the video tag.
+                                            </video>
+                                        {% elif section.media_type == 'video_link' and section.video_link %}
+                                            <div class="ratio ratio-16x9">
+                                                <iframe src="{{ section.video_link }}" allowfullscreen class="rounded shadow"></iframe>
+                                            </div>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                            {% endif %}
+                        </div>
+        </div>
+                {% endif %}
+            {% endfor %}
+        </div>
+    </section>
+    {% endif %}
+{% endblock %}
+

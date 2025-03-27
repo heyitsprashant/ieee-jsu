@@ -1,0 +1,71 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}Contact Us{% endblock %}
+{% block content %}
+    
+    <section class="contact-section">
+        
+        
+        <div class="container contact-container">
+            <div class="contact-info scroll-animation-left">
+                <img src="{% static '/assets/ieee.png'%}" alt="IEEE Logo" class="ieee-logo">
+                <p class="contact-tagline">Advancing Technology for Humanity</p>
+                <p class="contact-description">IEEE JSU Chapter: Institute of Electrical and Electronics Engineers.<br>Jacksonville State University Student Branch.</p>
+            </div>
+            
+            <div class="contact-form scroll-animation-right">
+                <h2>Contact Us</h2>
+                <form id="contactForm" method="POST" action=".">
+                    {% csrf_token %}
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="firstName">First Name</label>
+                            <input type="text" id="firstName" name="first_name" placeholder="First Name">
+                        </div>
+                        <div class="form-group">
+                            <label for="lastName">Last Name</label>
+                            <input type="text" id="lastName" name="last_name" placeholder="Last Name">
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" placeholder="Email Address">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="subject">Subject</label>
+                        <input type="text" id="subject" name="subject" placeholder="Subject">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="message">Your Message</label>
+                        <textarea id="message" name="message" placeholder="Your Message"></textarea>
+                    </div>
+                    
+                    <button type="submit" class="submit-button">Submit Form</button>
+
+                    {% if message %}
+                    <div style="margin-top: 10px; width: 100%; text-align: center; font-weight:600; color:rgb(22, 185, 22)" role="alert">
+                       <i class="fas fa-check-circle"></i> {{ message }}
+                    </div>
+                    {% endif %}
+                </form>
+            </div>
+        </div>
+        <div class="map-section scroll-animation">
+            <iframe 
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4078.4413951917145!2d-85.76845332371578!3d33.82410862974099!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x888a5158dd7ffd49%3A0x673f81a8d25f2bf6!2sAyers%20Hall!5e1!3m2!1sen!2sus!4v1742110354077!5m2!1sen!2sus" 
+                width="100%" 
+                height="100%" 
+                style="border:0;" 
+                allowfullscreen="" 
+                loading="lazy" 
+                referrerpolicy="no-referrer-when-downgrade"
+                title="Google Map of Ayers Hall, Jacksonville State University"
+                aria-label="Location map of Ayers Hall at Jacksonville State University"
+            ></iframe>
+        </div>
+    </section>
+    
+{% endblock %}

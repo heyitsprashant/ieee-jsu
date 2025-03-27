@@ -1,0 +1,115 @@
+{% extends "base.html" %}
+{% block title %}{{ event.title }}{% endblock %}
+{% load static %}
+{% block content %}
+<article class="event-post-detail {% if event.date < today %}past-event{% endif %}">
+    <header class="event-post-header">
+        <div class="event-post-navigation">
+            <a href="{% url 'events' %}" class="back-to-events">&larr; Back to Events</a>
+        </div>
+        <h1>{{ event.title }}</h1>
+        <div class="event-post-meta">
+            <span class="event-date">
+                <i class="far fa-calendar-alt"></i> {{ event.date|date:"F d, Y" }}
+                {% if event.date < today %}
+                <span class="past-event-badge">Past Event</span>
+                {% endif %}
+            </span>
+            <span class="event-location"><i class="fas fa-map-marker-alt"></i> {{ event.location }}</span>
+            {% if event.registration_link and event.date >= today %}
+            <span class="event-registration">
+                <a href="{{ event.registration_link }}" target="_blank" class="register-button">Register</a>
+            </span>
+            {% endif %}
+        </div>
+    </header>
+
+    <div class="event-post-image">
+        <img src="{{ event.image.url }}" alt="{{ event.title }}">
+    </div>
+
+    {% if event.excerpt %}
+    <div class="event-excerpt">
+        {{ event.excerpt|linebreaks }}
+    </div>
+    {% endif %}
+
+    <div class="event-post-content">
+        {{ event.content|linebreaks }}
+    </div>
+
+    {% if event.has_gallery and gallery_items %}
+    <div class="event-gallery">
+        <h2>Event Gallery</h2>
+        <div class="gallery-container">
+            {% for item in gallery_items %}
+                <div class="gallery-item">
+                    {% if item.media_type == 'image' %}
+                        <a href="{{ item.image.url }}" class="gallery-link" data-caption="{{ item.caption }}">
+                            <img src="{{ item.image.url }}" alt="{{ item.caption|default:event.title }}" class="gallery-img">
+                        </a>
+                    {% elif item.media_type == 'video' %}
+                        <div class="video-container">
+                            <iframe src="{{ item.video_url|safe }}" 
+                                    frameborder="0" 
+                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                                    allowfullscreen></iframe>
+                        </div>
+                    {% endif %}
+                    {% if item.caption %}
+                    <div class="gallery-caption">{{ item.caption }}</div>
+                    {% endif %}
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+    {% endif %}
+
+    <footer class="event-post-footer">
+        <a href="{% url 'events' %}" class="back-to-events">&larr; Back to Events</a>
+    </footer>
+    <br>
+</article>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+    // Simple lightbox functionality for gallery
+    document.addEventListener('DOMContentLoaded', function() {
+        const galleryLinks = document.querySelectorAll('.gallery-link');
+        
+        galleryLinks.forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const lightbox = document.createElement('div');
+                lightbox.classList.add('lightbox');
+                
+                const imgSrc = this.getAttribute('href');
+                const caption = this.getAttribute('data-caption');
+                
+                lightbox.innerHTML = `
+                    <div class="lightbox-content">
+                        <img src="${imgSrc}" alt="${caption || ''}">
+                        ${caption ? `<div class="lightbox-caption">${caption}</div>` : ''}
+                        <button class="lightbox-close">&times;</button>
+                    </div>
+                `;
+                
+                document.body.appendChild(lightbox);
+                
+                // Prevent scrolling
+                document.body.style.overflow = 'hidden';
+                
+                // Close lightbox when clicking outside or on close button
+                lightbox.addEventListener('click', function(e) {
+                    if (e.target === lightbox || e.target.classList.contains('lightbox-close')) {
+                        document.body.removeChild(lightbox);
+                        document.body.style.overflow = '';
+                    }
+                });
+            });
+        });
+    });
+</script>
+{% endblock %} 

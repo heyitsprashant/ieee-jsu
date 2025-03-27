@@ -1,0 +1,106 @@
+{% extends "base.html" %}
+{% block title %}Events{% endblock %}
+{% load static %}
+{% block content %}
+    <header class="website-background">
+        <div class="website-background-overlay"></div>
+        {% if background and background.background_image %}
+            <div class="website-background-overlay-image">
+                <img src="{{ background.background_image.url }}" alt="Events Background" style="width: 100%; height: 100%; object-fit: cover; object-position: center top; z-index: -1; filter: brightness(50%);">
+            </div>
+        {% endif %}
+        <div class="website-background-content">
+            <h1>{% if background %}{{ background.title }}{% else %}Events{% endif %}</h1>
+            <p>{% if background %}{{ background.subtitle }}{% else %}Discover our upcoming and past events{% endif %}</p>
+        </div>
+    </header>
+
+    <section class="events-highlights">
+        <div class="container">
+            <h2 class="scroll-animation-fade">Upcoming Events</h2>
+            <div class="grid">
+                {% for event in active_events %}
+                <div class="event-card scroll-animation-scale delay-{{ forloop.counter0|divisibleby:4|yesno:'100,200,300,400' }}">
+                    <img src="{{event.image.url}}" alt="{{ event.title }}" />
+                    <h3>{{event.title}}</h3>
+                    <p class="event-date">{{event.date|date:"F d, Y"}}</p>
+                    <p class="event-location"><i class="fas fa-map-marker-alt"></i> {{event.location}}</p>
+                    <p>{{event.description}}</p>
+                    
+                    {% if event.registration_link %}
+                    <a href="{{event.registration_link}}" class="event-button" target="_blank">Register Now</a>
+                    {% endif %}
+                </div>
+                {% empty %}
+                <div class="empty-state scroll-animation">
+                    <div class="empty-state-icon">
+                        <i class="fas fa-calendar-plus"></i>
+                    </div>
+                    <h3>No Upcoming Events</h3>
+                    <p>Stay tuned! We're planning exciting events for the future.</p>
+                    <div class="empty-state-actions">
+                        <a href="#past-events" class="empty-state-button">View Past Events</a>
+                        <a href="{% url 'contact' %}" class="empty-state-button secondary">Contact Us</a>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+
+    <section class="past-events" id="past-events" >
+        <div class="container">
+            <h2 class="scroll-animation-fade">Past Events</h2>
+            <div class="grid">
+                {% for event in past_events %}
+                <div class="event-card scroll-animation delay-{{ forloop.counter0|divisibleby:4|yesno:'100,200,300,400' }}">
+                    <img src="{{event.image.url}}" alt="{{ event.title }}" />
+                    <h3>{{event.title}}</h3>
+                    <p class="event-date">{{event.date|date:"F d, Y"}}</p>
+                    <p class="event-location"><i class="fas fa-map-marker-alt"></i> {{event.location}}</p>
+                    
+                    {% if event.excerpt %}
+                    <p>{{ event.excerpt|truncatewords:30 }}</p>
+                    {% else %}
+                    <p>{{ event.description|truncatewords:30 }}</p>
+                    {% endif %}
+                    
+                    <a href="{% url 'event_detail' event.slug %}" class="event-button">Read More</a>
+                </div>
+                {% empty %}
+                <div class="empty-state scroll-animation">
+                    <div class="empty-state-icon">
+                        <i class="fas fa-history"></i>
+                    </div>
+                    <h3>No Past Events Yet</h3>
+                    <p>We're just getting started! Check back soon for our event history.</p>
+                    <div class="empty-state-actions">
+                        <a href="{% url 'home' %}" class="empty-state-button">Return Home</a>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+            
+            <!-- Pagination -->
+            {% if past_events.has_other_pages %}
+            <div class="pagination scroll-animation">
+                {% if past_events.has_previous %}
+                    <a href="?page={{ past_events.previous_page_number }}" class="page-link">&laquo; Previous</a>
+                {% endif %}
+                
+                {% for num in past_events.paginator.page_range %}
+                    {% if past_events.number == num %}
+                        <span class="current-page">{{ num }}</span>
+                    {% else %}
+                        <a href="?page={{ num }}" class="page-link">{{ num }}</a>
+                    {% endif %}
+                {% endfor %}
+                
+                {% if past_events.has_next %}
+                    <a href="?page={{ past_events.next_page_number }}" class="page-link">Next &raquo;</a>
+                {% endif %}
+            </div>
+            {% endif %}
+        </div>
+    </section>
+{% endblock %}

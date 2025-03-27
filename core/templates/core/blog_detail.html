@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+{% block title %}{{ post.title }}{% endblock %}
+
+{% block content %}
+<article class="blog-post-detail">
+    <header class="post-header">
+        <div class="post-navigation">
+            <a href="{% url 'blog' %}" class="back-to-blog">&larr; Back to Blog</a>
+        </div>
+        <h1>{{ post.title }}</h1>
+        <div class="post-meta">
+            <span class="author">By {{ post.author }}</span>
+            <span class="date">{{ post.created_at|date:"F d, Y" }}</span>
+        </div>
+    </header>
+
+    {% if post.image %}
+    <div class="post-image">
+        <img src="{{ post.image.url }}" alt="{{ post.title }}">
+    </div>
+    {% endif %}
+
+    {% if post.video_url %}
+    <div class="post-video">
+        <div class="video-container">
+            {% if 'youtube.com' in post.video_url or 'youtu.be' in post.video_url %}
+                <iframe src="{{ post.video_url|safe }}" 
+                        frameborder="0" 
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                        allowfullscreen>
+                </iframe>
+            {% else %}
+                <video controls>
+                    <source src="{{ post.video_url }}" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            {% endif %}
+        </div>
+    </div>
+    {% endif %}
+
+    <div class="post-content">
+        {{ post.content|safe|linebreaks }}
+    </div>
+
+    <footer class="post-footer">
+        <a href="{% url 'blog' %}" class="back-to-blog">&larr; Back to Blog</a>
+    </footer>
+    <br>
+</article>
+{% endblock %} 

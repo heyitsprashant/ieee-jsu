@@ -1,0 +1,94 @@
+{% extends "base.html" %}
+{% block title %}Members{% endblock %}
+{% load static %}
+{% block content %}
+    <header class="website-background">
+        <div class="website-background-overlay"></div>
+        {% if background and background.background_image %}
+            <div class="website-background-overlay-image">
+                <img src="{{ background.background_image.url }}" alt="Members Background" style="width: 100%; height: 100%; object-fit: cover; object-position: center top; z-index: -1; filter: brightness(50%);">
+            </div>
+        {% endif %}
+        <div class="website-background-content">
+            <h1>{% if background %}{{ background.title }}{% else %}Join IEEE{% endif %}</h1>
+            <p>{% if background %}{{ background.subtitle }}{% else %}Become part of the world's largest technical professional organization{% endif %}</p>
+        </div>
+    </header>
+
+    <section class="membership-benefits">
+        <h2 class="scroll-animation-fade">Membership Benefits</h2>
+        <div class="container">
+            <div class="benefits-grid">
+                <div class="benefit-card scroll-animation-scale delay-100">
+                    <i class="fas fa-network-wired"></i>
+                    <h3>Networking Opportunities</h3>
+                    <p>Connect with professionals, academics, and fellow students in your field</p>
+                </div>
+                <div class="benefit-card scroll-animation-scale delay-200">
+                    <i class="fas fa-graduation-cap"></i>
+                    <h3>Educational Resources</h3>
+                    <p>Access to IEEE Xplore Digital Library, courses, and workshops</p>
+                </div>
+                <div class="benefit-card scroll-animation-scale delay-300">
+                    <i class="fas fa-briefcase"></i>
+                    <h3>Career Development</h3>
+                    <p>Job postings, resume workshops, and career guidance</p>
+                </div>
+                <div class="benefit-card scroll-animation-scale delay-400">
+                    <i class="fas fa-microchip"></i>
+                    <h3>Research Opportunities</h3>
+                    <p>Participate in IEEE sponsored research projects</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="how-to-join">
+        <h2 class="scroll-animation-fade">How to Join</h2>
+        <div class="container">
+            <div class="steps-grid">
+                <div class="step-card scroll-animation delay-100">
+                    <div class="step-number">1</div>
+                    <h3>Visit IEEE Website</h3>
+                    <p>Go to IEEE.org and click on "Join IEEE"</p>
+                </div>
+                <div class="step-card scroll-animation delay-200">
+                    <div class="step-number">2</div>
+                    <h3>Choose Membership</h3>
+                    <p>Select Student Membership option</p>
+                </div>
+                <div class="step-card scroll-animation delay-300">
+                    <div class="step-number">3</div>
+                    <h3>Complete Application</h3>
+                    <p>Fill out your information and submit payment</p>
+                </div>
+                <div class="step-card scroll-animation delay-400">
+                    <div class="step-number">4</div>
+                    <h3>Notify the club</h3>
+                    <p>Email us your membership number</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="membership-types">
+        <h2 class="scroll-animation-fade">Membership Options</h2>
+        <div class="container">
+            <div class="membership-grid">
+                <div class="membership-card scroll-animation-scale">
+                    <h3>Student Membership</h3>
+                    <p class="price">$32/year</p>
+                    <ul class="membership-features">
+                        <li><i class="fas fa-check"></i> Full access to IEEE Xplore</li>
+                        <li><i class="fas fa-check"></i> IEEE Spectrum subscription</li>
+                        <li><i class="fas fa-check"></i> Networking events</li>
+                        <li><i class="fas fa-check"></i> Technical workshops</li>
+                        
+                    </ul>
+                    <a href="https://www.ieee.org/membership/join/index.html" class="join-button" target="_blank">Join Now</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    
+{% endblock %}
