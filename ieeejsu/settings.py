@@ -26,7 +26,7 @@ import os
 DEBUG = os.getenv('DEBUG') == 'True'
 
 if not DEBUG:
-    ALLOWED_HOSTS = ['ieee-jsu.pythonanywhere.com']
+    ALLOWED_HOSTS = ['ieeejsu.pythonanywhere.com']
 else:
     ALLOWED_HOSTS = []
 
