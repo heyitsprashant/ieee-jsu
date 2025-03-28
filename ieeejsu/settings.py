@@ -24,7 +24,8 @@ SECRET_KEY = 'django-insecure-6yegg06v6n8qlxgfpe71ggs6#ev(io)@+@t@)l9*5!1xjzeou0
 
 import os
 DEBUG = os.getenv('DEBUG') == 'True'
-
+from dotenv import load_dotenv
+load_dotenv()
 if not DEBUG:
     ALLOWED_HOSTS = ['ieeejsu.pythonanywhere.com']
 else:
