@@ -12,28 +12,28 @@ const Events = () => {
   const [totalPastPages, setTotalPastPages] = useState(1);
 
   useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const [activeRes, pastRes, bgRes] = await Promise.all([
+          getEvents('active'),
+          getEvents('past', pastPage, 8),
+          getPageBackground('events')
+        ]);
+        
+        setActiveEvents(activeRes.data.events || activeRes.data);
+        setPastEvents(pastRes.data.events || pastRes.data);
+        setTotalPastPages(pastRes.data.pages || 1);
+        setBackground(bgRes.data);
+      } catch (err) {
+        setError('Error loading events');
+        console.error(err);
+      } finally {
+        setLoading(false);
+      }
+    };
+
     fetchData();
   }, [pastPage]);
-
-  const fetchData = async () => {
-    try {
-      const [activeRes, pastRes, bgRes] = await Promise.all([
-        getEvents('active'),
-        getEvents('past', pastPage, 8),
-        getPageBackground('events')
-      ]);
-      
-      setActiveEvents(activeRes.data.events || activeRes.data);
-      setPastEvents(pastRes.data.events || pastRes.data);
-      setTotalPastPages(pastRes.data.pages || 1);
-      setBackground(bgRes.data);
-    } catch (err) {
-      setError('Error loading events');
-      console.error(err);
-    } finally {
-      setLoading(false);
-    }
-  };
 
   const handlePageChange = (newPage) => {
     setPastPage(newPage);
