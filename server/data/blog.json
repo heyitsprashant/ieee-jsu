@@ -1,0 +1,38 @@
+[
+  {
+    "_id": "1",
+    "title": "Getting Started with Arduino",
+    "slug": "getting-started-with-arduino",
+    "author": "John Doe",
+    "content": "Arduino is an open-source electronics platform based on easy-to-use hardware and software. In this post, we'll explore the basics of Arduino programming and create your first project.\n\nWhat is Arduino?\nArduino is a microcontroller board that can be programmed to interact with various electronic components. It's perfect for beginners and experienced engineers alike.\n\nYour First Project\nLet's start with the classic 'Blink' program that makes an LED blink on and off.",
+    "excerpt": "Learn the basics of Arduino programming and create your first electronics project.",
+    "image": "/uploads/blog/arduino-basics.jpg",
+    "video_url": "",
+    "is_published": true,
+    "createdAt": "2023-11-15T10:00:00Z"
+  },
+  {
+    "_id": "2",
+    "title": "Introduction to Machine Learning",
+    "slug": "introduction-to-machine-learning",
+    "author": "Jane Smith",
+    "content": "Machine Learning is revolutionizing how we interact with technology. This comprehensive guide will introduce you to the fundamental concepts of ML.\n\nWhat is Machine Learning?\nMachine Learning is a subset of artificial intelligence that enables systems to learn and improve from experience without being explicitly programmed.\n\nTypes of Machine Learning\n1. Supervised Learning\n2. Unsupervised Learning\n3. Reinforcement Learning",
+    "excerpt": "A comprehensive introduction to machine learning concepts and applications.",
+    "image": "/uploads/blog/machine-learning.jpg",
+    "video_url": "https://www.youtube.com/watch?v=example",
+    "is_published": true,
+    "createdAt": "2023-10-20T14:30:00Z"
+  },
+  {
+    "_id": "3",
+    "title": "5G Technology Explained",
+    "slug": "5g-technology-explained",
+    "author": "Mike Johnson",
+    "content": "5G is the fifth generation of cellular network technology. It promises faster speeds, lower latency, and the ability to connect more devices simultaneously.\n\nKey Features of 5G:\n- Enhanced Mobile Broadband\n- Ultra-Reliable Low Latency\n- Massive Machine Type Communications\n\nApplications of 5G technology include IoT, autonomous vehicles, smart cities, and more.",
+    "excerpt": "Understanding the technology behind 5G networks and its applications.",
+    "image": "/uploads/blog/5g-tech.jpg",
+    "video_url": "",
+    "is_published": true,
+    "createdAt": "2023-09-10T09:15:00Z"
+  }
+]

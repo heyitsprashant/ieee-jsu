@@ -1,0 +1,24 @@
+[
+  {
+    "_id": "1",
+    "title": "Welcome to IEEE JSU",
+    "description": "The IEEE JSU Student Branch is dedicated to promoting excellence in the field of electrical and electronics engineering at Jacksonville State University. We provide opportunities for students to learn, network, and grow professionally.",
+    "section_type": "text_media",
+    "media_type": "image",
+    "image": "/uploads/home/ieee-welcome.jpg",
+    "is_homepage_feature": true,
+    "order": 1,
+    "is_active": true
+  },
+  {
+    "_id": "2",
+    "title": "Our Mission",
+    "description": "To advance technology for humanity by providing resources, networking opportunities, and educational experiences that empower our members to innovate and excel in their careers.",
+    "section_type": "text_media",
+    "media_type": "image",
+    "image": "/uploads/home/mission.jpg",
+    "is_homepage_feature": false,
+    "order": 2,
+    "is_active": true
+  }
+]

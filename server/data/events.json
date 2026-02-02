@@ -1,0 +1,64 @@
+[
+  {
+    "_id": "1",
+    "title": "Tech Workshop 2024",
+    "slug": "tech-workshop-2024",
+    "date": "2024-12-15",
+    "location": "Ayers Hall, Room 201",
+    "description": "Join us for an exciting workshop on the latest technology trends and hands-on projects.",
+    "excerpt": "An interactive workshop covering emerging technologies and practical applications.",
+    "content": "This comprehensive workshop will cover topics including AI, machine learning, IoT, and more. Participants will work on hands-on projects and learn from industry experts.",
+    "image": "/uploads/events/tech-workshop.jpg",
+    "registration_link": "https://forms.gle/example",
+    "has_gallery": true,
+    "gallery_items": [
+      {
+        "media_type": "image",
+        "image": "/uploads/gallery/workshop1.jpg",
+        "caption": "Workshop participants working on projects",
+        "order": 1
+      },
+      {
+        "media_type": "image",
+        "image": "/uploads/gallery/workshop2.jpg",
+        "caption": "Guest speaker presentation",
+        "order": 2
+      }
+    ]
+  },
+  {
+    "_id": "2",
+    "title": "IEEE Day Celebration",
+    "slug": "ieee-day-celebration",
+    "date": "2023-10-01",
+    "location": "JSU Student Center",
+    "description": "Celebrating IEEE Day with the student community.",
+    "excerpt": "A day of celebration, networking, and learning about IEEE activities.",
+    "content": "IEEE Day is celebrated around the world to commemorate the first time in history that engineers worldwide gathered to share their technical ideas in 1884.",
+    "image": "/uploads/events/ieee-day.jpg",
+    "registration_link": "",
+    "has_gallery": false,
+    "gallery_items": []
+  },
+  {
+    "_id": "3",
+    "title": "Robotics Competition",
+    "slug": "robotics-competition",
+    "date": "2023-09-15",
+    "location": "Engineering Building",
+    "description": "Annual robotics competition for students.",
+    "excerpt": "Showcase your robotics skills in this exciting competition.",
+    "content": "Teams of students will compete in various robotics challenges. Prizes will be awarded to top performers.",
+    "image": "/uploads/events/robotics.jpg",
+    "registration_link": "",
+    "has_gallery": true,
+    "gallery_items": [
+      {
+        "media_type": "video",
+        "video_url": "https://www.youtube.com/watch?v=example",
+        "caption": "Competition highlights",
+        "order": 1
+      }
+    ]
+  }
+]
