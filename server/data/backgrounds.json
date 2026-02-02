@@ -1,0 +1,44 @@
+[
+  {
+    "page": "home",
+    "title": "Welcome to IEEE JSU",
+    "subtitle": "Jacksonville State University Student Branch",
+    "background_image": "/uploads/backgrounds/home-bg.jpg",
+    "is_active": true
+  },
+  {
+    "page": "about",
+    "title": "About IEEE JSU",
+    "subtitle": "Our Mission, Vision, and Team",
+    "background_image": "/uploads/backgrounds/about-bg.jpg",
+    "is_active": true
+  },
+  {
+    "page": "events",
+    "title": "Events",
+    "subtitle": "Workshops, Competitions, and Networking",
+    "background_image": "/uploads/backgrounds/events-bg.jpg",
+    "is_active": true
+  },
+  {
+    "page": "blog",
+    "title": "Blog",
+    "subtitle": "Technical Articles and Updates",
+    "background_image": "/uploads/backgrounds/blog-bg.jpg",
+    "is_active": true
+  },
+  {
+    "page": "members",
+    "title": "Membership",
+    "subtitle": "Join IEEE JSU Student Branch",
+    "background_image": "/uploads/backgrounds/members-bg.jpg",
+    "is_active": true
+  },
+  {
+    "page": "contact",
+    "title": "Contact Us",
+    "subtitle": "Get in Touch with IEEE JSU",
+    "background_image": "/uploads/backgrounds/contact-bg.jpg",
+    "is_active": true
+  }
+]

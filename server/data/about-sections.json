@@ -1,0 +1,22 @@
+[
+  {
+    "_id": "1",
+    "title": "About IEEE JSU",
+    "content": "The IEEE JSU Student Branch at Jacksonville State University is part of the world's largest technical professional organization dedicated to advancing technology for humanity. Our chapter brings together students interested in electrical engineering, computer engineering, and related fields to foster professional development, networking, and technical excellence.",
+    "image": "/uploads/about/about-us.jpg",
+    "button_text": "Learn More",
+    "button_url": "https://www.ieee.org/",
+    "section_order": 1,
+    "is_active": true
+  },
+  {
+    "_id": "2",
+    "title": "What We Do",
+    "content": "We organize workshops, seminars, competitions, and networking events to help students develop their technical and professional skills. Our activities include hands-on projects, guest speaker sessions, industry visits, and participation in IEEE conferences and competitions.",
+    "image": "/uploads/about/activities.jpg",
+    "button_text": "",
+    "button_url": "",
+    "section_order": 2,
+    "is_active": true
+  }
+]

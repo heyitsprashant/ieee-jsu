@@ -1,0 +1,35 @@
+[
+  {
+    "_id": "1",
+    "name": "John Doe",
+    "position": "President",
+    "image": "/uploads/officers/john-doe.jpg",
+    "linkedin": "https://linkedin.com/in/johndoe",
+    "github": "https://github.com/johndoe",
+    "email": "john.doe@jsu.edu",
+    "is_active": true,
+    "order": 1
+  },
+  {
+    "_id": "2",
+    "name": "Jane Smith",
+    "position": "Vice President",
+    "image": "/uploads/officers/jane-smith.jpg",
+    "linkedin": "https://linkedin.com/in/janesmith",
+    "github": "https://github.com/janesmith",
+    "email": "jane.smith@jsu.edu",
+    "is_active": true,
+    "order": 2
+  },
+  {
+    "_id": "3",
+    "name": "Mike Johnson",
+    "position": "Secretary",
+    "image": "/uploads/officers/mike-johnson.jpg",
+    "linkedin": "https://linkedin.com/in/mikejohnson",
+    "github": "",
+    "email": "mike.johnson@jsu.edu",
+    "is_active": true,
+    "order": 3
+  }
+]

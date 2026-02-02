@@ -1,0 +1,32 @@
+[
+  {
+    "_id": "1",
+    "name": "Dr. Sarah Williams",
+    "position": "Faculty Advisor",
+    "image": "/uploads/mentors/sarah-williams.jpg",
+    "linkedin": "https://linkedin.com/in/sarahwilliams",
+    "github": "",
+    "email": "sarah.williams@jsu.edu",
+    "google_scholar": "https://scholar.google.com/citations?user=example",
+    "personal_website": "https://sarahwilliams.edu",
+    "bio": "Dr. Williams is an experienced electrical engineer with over 15 years of experience in the field. She specializes in power systems and renewable energy.",
+    "expertise": "Power Systems, Renewable Energy, Smart Grids",
+    "is_active": true,
+    "order": 1
+  },
+  {
+    "_id": "2",
+    "name": "Dr. Robert Chen",
+    "position": "Technical Mentor",
+    "image": "/uploads/mentors/robert-chen.jpg",
+    "linkedin": "https://linkedin.com/in/robertchen",
+    "github": "https://github.com/robertchen",
+    "email": "robert.chen@jsu.edu",
+    "google_scholar": "https://scholar.google.com/citations?user=example2",
+    "personal_website": "",
+    "bio": "Dr. Chen has extensive experience in embedded systems and IoT. He has published numerous papers and led various research projects.",
+    "expertise": "Embedded Systems, IoT, Microcontrollers",
+    "is_active": true,
+    "order": 2
+  }
+]
